@@ -7,6 +7,7 @@ public class OrderStrategy implements Cloneable {
 
     static {
         sortStrategy.put("Ascending", new Ascending());
+        sortStrategy.put("Descending", new Descending());
     }
 
     public static OrderStrategy getStrategy(String name) {

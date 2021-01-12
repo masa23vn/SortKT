@@ -4,6 +4,7 @@ import com.company.SortFactory.SortFactory;
 import com.company.Strategy.OrderStrategy.Ascending;
 import com.company.Strategy.OrderStrategy.Descending;
 import com.company.Strategy.SortStrategy.DefaultSort;
+import com.company.Strategy.SortStrategy.MergeSort;
 
 import java.util.ArrayList;
 
@@ -20,8 +21,9 @@ public class Main {
         array.add(0);
         array.add(1);
 
+        System.out.println("Accending");
         factory.setSortObject(array);
-        factory.setStrategy(new DefaultSort());
+        factory.setStrategy(new MergeSort());
         factory.setOrder(new Ascending());
         factory.sort();
 
@@ -30,6 +32,7 @@ public class Main {
         }
         System.out.println();
 
+        System.out.println("Decending");
         factory.setOrder(new Descending());
         factory.sort();
 
