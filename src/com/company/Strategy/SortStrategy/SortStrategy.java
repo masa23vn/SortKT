@@ -31,7 +31,7 @@ public class SortStrategy implements Cloneable {
         return super.clone();
     }
 
-    public void sort(ArrayList<Object> array) {
+    public <T extends Comparable<T>> void sort(ArrayList<T> array) {
     }
 
     public OrderStrategy getOrder() {

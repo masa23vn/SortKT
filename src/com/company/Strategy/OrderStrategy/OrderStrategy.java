@@ -26,7 +26,7 @@ public class OrderStrategy implements Cloneable {
         return super.clone();
     }
 
-    public Boolean check(Object a, Object b) {
+    public <T extends Comparable<T>> Boolean check(T a, T b) {
         return true;
     }
 }

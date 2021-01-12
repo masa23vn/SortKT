@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public class SortFactory {
 	private SortStrategy strategy = null;
 	private OrderStrategy order = null;
-	private ArrayList<Object> sortObject = null;
+	private ArrayList sortObject = null;
 
 	public SortFactory() {
 		this.strategy = SortStrategy.getStrategy("Default");
 		this.order = OrderStrategy.getStrategy("Ascending");
 	}
 
-	public ArrayList<Object> getSortObject() {
+	public ArrayList getSortObject() {
 		return sortObject;
 	}
 
@@ -25,7 +25,7 @@ public class SortFactory {
 	}
 
 
-	public void setSortObject(ArrayList<Object> sortObject) {
+	public void setSortObject(ArrayList sortObject) {
 		this.sortObject = sortObject;
 	}
 

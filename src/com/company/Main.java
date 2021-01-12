@@ -13,12 +13,12 @@ public class Main {
         SortFactory factory = new SortFactory();
 
         ArrayList array = new ArrayList();
-        array.add(5);
-        array.add(3);
-        array.add(7);
-        array.add(8);
-        array.add(0);
-        array.add(1);
+        array.add(5.9);
+        array.add(3.5);
+        array.add(7.6);
+        array.add(8.8);
+        array.add(0.6);
+        array.add(1.4);
 
         factory.setSortObject(array);
         factory.setStrategy(new DefaultSort());
@@ -26,7 +26,7 @@ public class Main {
         factory.sort();
 
         for (Object i: array) {
-            System.out.println((int) i);
+            System.out.println(i);
         }
         System.out.println();
 
@@ -34,7 +34,7 @@ public class Main {
         factory.sort();
 
         for (Object i: array) {
-            System.out.println((int) i);
+            System.out.println(i);
         }
 
     }
