@@ -11,7 +11,7 @@ public class SortFactory {
 	private ArrayList sortObject = null;
 
 	public SortFactory() {
-		this.strategy = SortStrategy.getStrategy("Default");
+		this.strategy = SortStrategy.getStrategy("Interchange");
 		this.order = OrderStrategy.getStrategy("Ascending");
 	}
 

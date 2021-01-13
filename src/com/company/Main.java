@@ -1,9 +1,10 @@
 package com.company;
 
+import com.company.Class.Person;
 import com.company.SortFactory.SortFactory;
-import com.company.Strategy.OrderStrategy.Ascending;
-import com.company.Strategy.OrderStrategy.Descending;
-import com.company.Strategy.SortStrategy.DefaultSort;
+import com.company.Strategy.OrderStrategy.ComparableCheck.*;
+import com.company.Strategy.OrderStrategy.CustomCheck.*;
+import com.company.Strategy.SortStrategy.IntechangeSort;
 import com.company.Strategy.SortStrategy.MergeSort;
 
 import java.util.ArrayList;
@@ -21,10 +22,10 @@ public class Main {
         array.add(0.6);
         array.add(1.4);
 
-        System.out.println("Accending");
+        System.out.println("Ascending");
         factory.setSortObject(array);
-        factory.setStrategy(new MergeSort());
-        factory.setOrder(new Ascending());
+        factory.setStrategy("Merge");
+        factory.setOrder("Descending");
         factory.sort();
 
         for (Object i: array) {
@@ -32,11 +33,21 @@ public class Main {
         }
         System.out.println();
 
-        System.out.println("Decending");
-        factory.setOrder(new Descending());
+        ArrayList<Person> array2 = new ArrayList();
+        array2.add(new Person(1,50));
+        array2.add(new Person(1,23));
+        array2.add(new Person(1,41));
+        array2.add(new Person(1,20));
+        array2.add(new Person(1,11));
+        array2.add(new Person(1,68));
+
+        System.out.println("Custom object");
+        factory.setSortObject(array2);
+        factory.setStrategy(new IntechangeSort());
+        factory.setOrder(new PersonAgeAscending());
         factory.sort();
 
-        for (Object i: array) {
+        for (Person i: array2) {
             System.out.println(i);
         }
 
