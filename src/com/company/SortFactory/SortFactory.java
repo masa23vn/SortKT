@@ -1,7 +1,9 @@
 package com.company.SortFactory;
 
 import com.company.Strategy.OrderStrategy.OrderStrategy;
+import com.company.Strategy.OrderStrategy.OrderStrategyManager;
 import com.company.Strategy.SortStrategy.SortStrategy;
+import com.company.Strategy.SortStrategy.SortStrategyManager;
 
 import java.util.ArrayList;
 
@@ -11,8 +13,8 @@ public class SortFactory {
 	private Attribute attribute = new Attribute();
 
 	private SortFactory() {
-		attribute.setAttribute("Strategy",  SortStrategy.getStrategy("Interchange"));
-		attribute.setAttribute("Order",  SortStrategy.getStrategy("Interchange"));
+		attribute.setAttribute("Strategy",  SortStrategyManager.getStrategy("Interchange"));
+		attribute.setAttribute("Order",  SortStrategyManager.getStrategy("Interchange"));
 	}
 
 	public static SortFactory getInstance() {
@@ -41,7 +43,7 @@ public class SortFactory {
 	}
 
 	public void setStrategy(String name) {
-		attribute.setAttribute("Strategy", SortStrategy.getStrategy(name));
+		attribute.setAttribute("Strategy", SortStrategyManager.getStrategy(name));
 	}
 
 	public void setStrategy(SortStrategy strategy) {
@@ -53,7 +55,7 @@ public class SortFactory {
 	}
 
 	public void setOrder(String name) {
-		attribute.setAttribute("Order", OrderStrategy.getStrategy(name));
+		attribute.setAttribute("Order", OrderStrategyManager.getStrategy(name));
 	}
 
 	public void setOrder(OrderStrategy order) {

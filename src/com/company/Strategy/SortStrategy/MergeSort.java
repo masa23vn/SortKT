@@ -1,7 +1,5 @@
 package com.company.Strategy.SortStrategy;
 
-import com.company.Strategy.OrderStrategy.OrderStrategy;
-
 import java.util.ArrayList;
 
 public class MergeSort extends SortStrategy {

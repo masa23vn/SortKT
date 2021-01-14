@@ -5,6 +5,7 @@ import com.company.SortFactory.SortFactory;
 import com.company.Strategy.OrderStrategy.Custom.PersonAgeAscending;
 import com.company.Strategy.OrderStrategy.Custom.PersonAgeDescending;
 import com.company.Strategy.SortStrategy.InterchangeSort;
+import com.company.Strategy.SortStrategy.MergeSort;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public class Main {
         System.out.println("Ascending");
         factory.setSortObject(array);
         factory.setStrategy("Merge");
-        factory.setOrder("Descending");
+        factory.setOrder("Ascending");
         factory.sort();
 
         for (Object i: array) {
@@ -42,7 +43,7 @@ public class Main {
 
         System.out.println("Custom object");
         factory.setSortObject(array2);
-        factory.setStrategy(new InterchangeSort());
+        factory.setStrategy(new MergeSort());
         factory.setOrder(new PersonAgeAscending());
         factory.sort();
 
