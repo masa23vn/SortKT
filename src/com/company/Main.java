@@ -2,10 +2,9 @@ package com.company;
 
 import com.company.Class.Person;
 import com.company.SortFactory.SortFactory;
-import com.company.Strategy.OrderStrategy.ComparableCheck.*;
-import com.company.Strategy.OrderStrategy.CustomCheck.*;
-import com.company.Strategy.SortStrategy.IntechangeSort;
-import com.company.Strategy.SortStrategy.MergeSort;
+import com.company.Strategy.OrderStrategy.Custom.PersonAgeAscending;
+import com.company.Strategy.OrderStrategy.Custom.PersonAgeDescending;
+import com.company.Strategy.SortStrategy.InterchangeSort;
 
 import java.util.ArrayList;
 
@@ -25,7 +24,7 @@ public class Main {
         System.out.println("Ascending");
         factory.setSortObject(array);
         factory.setStrategy("Merge");
-        factory.setOrder("Ascending");
+        factory.setOrder("Descending");
         factory.sort();
 
         for (Object i: array) {
@@ -43,8 +42,8 @@ public class Main {
 
         System.out.println("Custom object");
         factory.setSortObject(array2);
-        factory.setStrategy(new IntechangeSort());
-        factory.setOrder(new PersonAgeDescending());
+        factory.setStrategy(new InterchangeSort());
+        factory.setOrder(new PersonAgeAscending());
         factory.sort();
 
         for (Person i: array2) {

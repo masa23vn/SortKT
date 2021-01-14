@@ -11,7 +11,7 @@ public class SortStrategy implements Cloneable {
 
 
     static  {
-        sortStrategy.put("Interchange", new IntechangeSort());
+        sortStrategy.put("Interchange", new InterchangeSort());
         sortStrategy.put("Merge", new MergeSort());
     }
 
@@ -32,7 +32,7 @@ public class SortStrategy implements Cloneable {
         return super.clone();
     }
 
-    public <T> void sort(ArrayList<T> array) {
+    public void sort(ArrayList<Object> array) throws ClassCastException {
     }
 
     public OrderStrategy getOrder() {

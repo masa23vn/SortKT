@@ -70,8 +70,13 @@ public class SortFactory {
 				strategy.setOrder(order);
 			}
 			if (object != null) {
-				strategy.sort(object);
-				return true;
+				try {
+					strategy.sort(object);
+					return true;
+				}
+				catch (ClassCastException e) {
+					System.out.println("ERROR: Need custom order method for class\n       " + e.getMessage());
+				}
 			}
 		}
 		return false;

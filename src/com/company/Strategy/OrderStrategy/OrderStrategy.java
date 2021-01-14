@@ -1,8 +1,5 @@
 package com.company.Strategy.OrderStrategy;
 
-import com.company.Strategy.OrderStrategy.ComparableCheck.Ascending;
-import com.company.Strategy.OrderStrategy.ComparableCheck.Descending;
-
 import java.util.HashMap;
 
 public class OrderStrategy implements Cloneable {
@@ -30,25 +27,8 @@ public class OrderStrategy implements Cloneable {
         return super.clone();
     }
 
-    public <T> Boolean check(T a, T b) {
-        try {
-            if (a instanceof java.lang.Comparable) {
-                return checkComparable((Comparable) a, (Comparable) b);
-            } else {
-                return checkCustom((Object) a, (Object) b);
-            }
-        }
-        catch(Exception e) {
-            System.out.println("Wrong data type");
-            return false;
-        }
-    }
-
-    public <Object> Boolean checkCustom(Object a, Object b) {
+    public Boolean check(Object a, Object b) throws ClassCastException {
         return false;
     }
 
-    public <T extends Comparable<T>> Boolean checkComparable(T a, T b) {
-        return true;
-    }
 }
