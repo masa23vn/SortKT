@@ -6,48 +6,75 @@ import com.company.Strategy.SortStrategy.SortStrategy;
 import java.util.ArrayList;
 
 public class SortFactory {
-	private SortStrategy strategy = null;
-	private OrderStrategy order = null;
-	private ArrayList sortObject = null;
+	private static volatile SortFactory instance;
 
-	public SortFactory() {
-		this.strategy = SortStrategy.getStrategy("Interchange");
-		this.order = OrderStrategy.getStrategy("Ascending");
+	private Attribute attribute = new Attribute();
+
+	private SortFactory() {
+		attribute.setAttribute("Strategy",  SortStrategy.getStrategy("Interchange"));
+		attribute.setAttribute("Order",  SortStrategy.getStrategy("Interchange"));
+	}
+
+	public static SortFactory getInstance() {
+		SortFactory result = instance;
+		if (result != null) {
+			return result;
+		}
+		synchronized(SortFactory.class) {
+			if (instance == null) {
+				instance = new SortFactory();
+			}
+			return instance;
+		}
 	}
 
 	public ArrayList getSortObject() {
-		return sortObject;
+		return (ArrayList) attribute.getAttribute("Object");
 	}
-
-	public void sort() {
-		strategy.setOrder(this.order);
-		strategy.sort(sortObject);
-	}
-
 
 	public void setSortObject(ArrayList sortObject) {
-		this.sortObject = sortObject;
+		attribute.setAttribute("Object",  sortObject);
+	}
+
+	public SortStrategy getStrategy() {
+		return (SortStrategy) attribute.getAttribute("Strategy");
 	}
 
 	public void setStrategy(String name) {
-		this.strategy = SortStrategy.getStrategy(name);
+		attribute.setAttribute("Strategy", SortStrategy.getStrategy(name));
 	}
 
 	public void setStrategy(SortStrategy strategy) {
-		this.strategy = strategy;
+		attribute.setAttribute("Strategy", strategy);
 	}
 
 	public OrderStrategy getOrder() {
-		return order;
+		return (OrderStrategy) attribute.getAttribute("Order");
 	}
 
 	public void setOrder(String name) {
-		this.order = OrderStrategy.getStrategy(name);
+		attribute.setAttribute("Order", OrderStrategy.getStrategy(name));
 	}
 
 	public void setOrder(OrderStrategy order) {
-		this.order = order;
+		attribute.setAttribute("Order", order);
 	}
 
+	public Boolean sort() {
+		SortStrategy strategy = getStrategy();
+		OrderStrategy order = getOrder();
+		ArrayList object = getSortObject();
+
+		if (strategy != null) {
+			if (order != null) {
+				strategy.setOrder(order);
+			}
+			if (object != null) {
+				strategy.sort(object);
+				return true;
+			}
+		}
+		return false;
+	}
 }
 

@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        SortFactory factory = new SortFactory();
+        SortFactory factory = SortFactory.getInstance();
 
         ArrayList array = new ArrayList();
         array.add(5.9);
@@ -25,7 +25,7 @@ public class Main {
         System.out.println("Ascending");
         factory.setSortObject(array);
         factory.setStrategy("Merge");
-        factory.setOrder("Descending");
+        factory.setOrder("Ascending");
         factory.sort();
 
         for (Object i: array) {
@@ -44,7 +44,7 @@ public class Main {
         System.out.println("Custom object");
         factory.setSortObject(array2);
         factory.setStrategy(new IntechangeSort());
-        factory.setOrder(new PersonAgeAscending());
+        factory.setOrder(new PersonAgeDescending());
         factory.sort();
 
         for (Person i: array2) {
