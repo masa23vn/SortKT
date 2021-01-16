@@ -2,13 +2,12 @@ package com.company;
 
 import com.company.Class.Person;
 import com.company.SortFactory.SortFactory;
-import com.company.Strategy.OrderStrategy.Constant.OrderConstant;
+import com.company.Strategy.OrderStrategy.OrderStrategyConstant.OrderStrategyConstant;
 import com.company.Strategy.OrderStrategy.Custom.PersonAgeAscending;
+import com.company.Strategy.SortStrategy.Constant.Complexity;
 import com.company.Strategy.SortStrategy.SortStrategyCriteria.BestTimeCriteria;
 import com.company.Strategy.SortStrategy.SortStrategyCriteria.SortStrategyCriteria;
-import com.company.Strategy.SortStrategy.Strategy.Constant.AgorithmConstant;
-import com.company.Strategy.SortStrategy.Strategy.InterchangeSort;
-import com.company.Strategy.SortStrategy.Strategy.MergeSort;
+import com.company.Strategy.SortStrategy.Strategy.AlgorithmsStrategyConstant.AlgorithmsStrategyConstant;
 
 import java.util.ArrayList;
 
@@ -25,10 +24,10 @@ public class Main {
         array.add(0.6);
         array.add(1.4);
 
-        System.out.println(OrderConstant.ASCENDING);
+        System.out.println(OrderStrategyConstant.DESCENDING);
         factory.setSortObject(array);
-        factory.setStrategy(AgorithmConstant.MERGER_SORT.getName());
-        factory.setOrder(OrderConstant.ASCENDING.getName());
+        factory.setStrategy(AlgorithmsStrategyConstant.MERGER_SORT.getName());
+        factory.setOrder(OrderStrategyConstant.DESCENDING.getName());
         factory.sort();
 
         for (Object i: array) {
@@ -46,10 +45,10 @@ public class Main {
 
         System.out.println("Custom object");
         factory.setSortObject(array2);
-        factory.setOrder(new PersonAgeAscending());
+        factory.setOrder(OrderStrategyConstant.PERSON_AGE_ASCENDING.getName());
 
         ArrayList<SortStrategyCriteria> check = new ArrayList<>();
-        check.add(new BestTimeCriteria("o(n^2)"));
+        check.add(new BestTimeCriteria(Complexity.NLOGN.getName()));
         factory.setStrategy(check);
         System.out.println(factory.getStrategy());
 

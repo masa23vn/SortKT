@@ -1,9 +1,6 @@
-package com.company.Strategy.OrderStrategy.Constant;
+package com.company.Strategy.OrderStrategy.OrderStrategyConstant;
 
-import com.company.Strategy.OrderStrategy.OrderStrategy;
-import com.company.Strategy.SortStrategy.Strategy.Constant.AgorithmConstant;
-
-public enum OrderConstant {
+public enum OrderStrategyConstant {
     ASCENDING("Ascending"),
     DESCENDING("Descending"),
     INTEGER_ASCENDING("Integer ascending"),
@@ -17,12 +14,12 @@ public enum OrderConstant {
 
     private String name;
 
-    OrderConstant(String name) {
+    OrderStrategyConstant(String name) {
         this.name = name;
     }
 
-    public static OrderConstant isValid(String name){
-        for (OrderConstant al: values()){
+    public static OrderStrategyConstant isValid(String name){
+        for (OrderStrategyConstant al: values()){
             if(al.getName().equals(name))
                 return al;
         }
