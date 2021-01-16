@@ -3,9 +3,10 @@ package com.company;
 import com.company.Class.Person;
 import com.company.SortFactory.SortFactory;
 import com.company.Strategy.OrderStrategy.Custom.PersonAgeAscending;
-import com.company.Strategy.OrderStrategy.Custom.PersonAgeDescending;
-import com.company.Strategy.SortStrategy.InterchangeSort;
-import com.company.Strategy.SortStrategy.MergeSort;
+import com.company.Strategy.SortStrategy.SortStrategyCriteria.BestTimeCriteria;
+import com.company.Strategy.SortStrategy.SortStrategyCriteria.SortStrategyCriteria;
+import com.company.Strategy.SortStrategy.Strategy.InterchangeSort;
+import com.company.Strategy.SortStrategy.Strategy.MergeSort;
 
 import java.util.ArrayList;
 
@@ -34,22 +35,25 @@ public class Main {
         System.out.println();
 
         ArrayList<Person> array2 = new ArrayList();
-        array2.add(new Person(1,50));
-        array2.add(new Person(1,23));
-        array2.add(new Person(1,41));
-        array2.add(new Person(1,20));
-        array2.add(new Person(1,11));
-        array2.add(new Person(1,68));
+        array2.add(new Person(1,50, "John"));
+        array2.add(new Person(1,23, "John"));
+        array2.add(new Person(1,41, "John"));
+        array2.add(new Person(1,20, "John"));
+        array2.add(new Person(1,11, "John"));
+        array2.add(new Person(1,68, "John"));
 
         System.out.println("Custom object");
         factory.setSortObject(array2);
-        factory.setStrategy(new MergeSort());
         factory.setOrder(new PersonAgeAscending());
-        factory.sort();
 
+        ArrayList<SortStrategyCriteria> check = new ArrayList<>();
+        check.add(new BestTimeCriteria("o(n^2)"));
+        factory.setStrategy(check);
+        System.out.println(factory.getStrategy());
+
+        factory.sort();
         for (Person i: array2) {
             System.out.println(i);
         }
-
     }
 }

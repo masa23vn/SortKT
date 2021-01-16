@@ -2,10 +2,12 @@ package com.company.SortFactory;
 
 import com.company.Strategy.OrderStrategy.OrderStrategy;
 import com.company.Strategy.OrderStrategy.OrderStrategyManager;
-import com.company.Strategy.SortStrategy.SortStrategy;
+import com.company.Strategy.SortStrategy.SortStrategyCriteria.SortStrategyCriteria;
+import com.company.Strategy.SortStrategy.Strategy.SortStrategy;
 import com.company.Strategy.SortStrategy.SortStrategyManager;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SortFactory {
 	private static volatile SortFactory instance;
@@ -48,6 +50,10 @@ public class SortFactory {
 
 	public void setStrategy(SortStrategy strategy) {
 		attribute.setAttribute("Strategy", strategy);
+	}
+
+	public void setStrategy(List<SortStrategyCriteria> criteria) {
+		attribute.setAttribute("Strategy", SortStrategyManager.getStrategy(criteria));
 	}
 
 	public OrderStrategy getOrder() {
