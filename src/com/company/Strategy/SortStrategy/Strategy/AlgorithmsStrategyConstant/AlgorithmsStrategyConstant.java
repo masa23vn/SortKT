@@ -14,10 +14,6 @@ public enum AlgorithmsStrategyConstant {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public static AlgorithmsStrategyConstant isValid(String name){
         for (AlgorithmsStrategyConstant al: values()){
             if(al.getName().equals(name))

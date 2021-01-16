@@ -37,11 +37,11 @@ public class Main {
 
         ArrayList<Person> array2 = new ArrayList();
         array2.add(new Person(1,50, "John"));
-        array2.add(new Person(1,23, "John"));
-        array2.add(new Person(1,41, "John"));
-        array2.add(new Person(1,20, "John"));
-        array2.add(new Person(1,11, "John"));
-        array2.add(new Person(1,68, "John"));
+        array2.add(new Person(1,23, "ABCD"));
+        array2.add(new Person(1,41, "ABCE"));
+        array2.add(new Person(1,20, "ACAA"));
+        array2.add(new Person(1,11, "ab"));
+        array2.add(new Person(1,68, "ac"));
 
         System.out.println("Custom object");
         factory.setSortObject(array2);
@@ -50,7 +50,7 @@ public class Main {
         ArrayList<SortStrategyCriteria> check = new ArrayList<>();
         check.add(new BestTimeCriteria(Complexity.NLOGN.getName()));
         factory.setStrategy(check);
-        System.out.println(factory.getStrategy());
+        System.out.println("Using sort strategy: "+factory.getStrategy());
 
         factory.sort();
         for (Person i: array2) {

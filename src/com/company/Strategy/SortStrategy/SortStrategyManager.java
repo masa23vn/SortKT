@@ -19,11 +19,9 @@ public class SortStrategyManager {
 
     public static SortStrategy getStrategy(String name) {
         try {
-            AlgorithmsStrategyConstant agorithmConstant = AlgorithmsStrategyConstant.isValid(name);
-            System.out.println("strategy: " + agorithmConstant.getName());
-
-            if (sortStrategy.containsKey(agorithmConstant)) {
-                return (SortStrategy) sortStrategy.get(agorithmConstant).clone();
+            AlgorithmsStrategyConstant algorithmConstant = AlgorithmsStrategyConstant.isValid(name);
+            if (sortStrategy.containsKey(algorithmConstant)) {
+                return (SortStrategy) sortStrategy.get(algorithmConstant).clone();
             } else {
                 return null;
             }
