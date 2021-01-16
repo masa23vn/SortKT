@@ -2,9 +2,11 @@ package com.company;
 
 import com.company.Class.Person;
 import com.company.SortFactory.SortFactory;
+import com.company.Strategy.OrderStrategy.Constant.OrderConstant;
 import com.company.Strategy.OrderStrategy.Custom.PersonAgeAscending;
 import com.company.Strategy.SortStrategy.SortStrategyCriteria.BestTimeCriteria;
 import com.company.Strategy.SortStrategy.SortStrategyCriteria.SortStrategyCriteria;
+import com.company.Strategy.SortStrategy.Strategy.Constant.AgorithmConstant;
 import com.company.Strategy.SortStrategy.Strategy.InterchangeSort;
 import com.company.Strategy.SortStrategy.Strategy.MergeSort;
 
@@ -23,10 +25,10 @@ public class Main {
         array.add(0.6);
         array.add(1.4);
 
-        System.out.println("Ascending");
+        System.out.println(OrderConstant.ASCENDING);
         factory.setSortObject(array);
-        factory.setStrategy("Merge");
-        factory.setOrder("Ascending");
+        factory.setStrategy(AgorithmConstant.MERGER_SORT.getName());
+        factory.setOrder(OrderConstant.ASCENDING.getName());
         factory.sort();
 
         for (Object i: array) {
