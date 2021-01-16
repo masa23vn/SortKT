@@ -1,5 +1,6 @@
 package com.company.Strategy.SortStrategy.Strategy;
 
+import com.company.Strategy.OrderStrategy.Constant.OrderConstant;
 import com.company.Strategy.OrderStrategy.OrderStrategy;
 import com.company.Strategy.OrderStrategy.OrderStrategyManager;
 import com.company.Strategy.SortStrategy.Constant.Complexity;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SortStrategy implements Cloneable {
-    protected OrderStrategy order = OrderStrategyManager.getStrategy("Ascending");
+    protected OrderStrategy order = OrderStrategyManager.getStrategy(OrderConstant.ASCENDING.getName());
     protected HashMap<String, Complexity> infos = new HashMap<String, Complexity>();
 
     public Object clone() throws CloneNotSupportedException {

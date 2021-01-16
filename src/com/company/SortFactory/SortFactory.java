@@ -1,8 +1,10 @@
 package com.company.SortFactory;
 
+import com.company.Strategy.OrderStrategy.Constant.OrderConstant;
 import com.company.Strategy.OrderStrategy.OrderStrategy;
 import com.company.Strategy.OrderStrategy.OrderStrategyManager;
 import com.company.Strategy.SortStrategy.SortStrategyCriteria.SortStrategyCriteria;
+import com.company.Strategy.SortStrategy.Strategy.Constant.AgorithmConstant;
 import com.company.Strategy.SortStrategy.Strategy.SortStrategy;
 import com.company.Strategy.SortStrategy.SortStrategyManager;
 
@@ -15,8 +17,8 @@ public class SortFactory {
 	private Attribute attribute = new Attribute();
 
 	private SortFactory() {
-		attribute.setAttribute("Strategy",  SortStrategyManager.getStrategy("Interchange"));
-		attribute.setAttribute("Order",  SortStrategyManager.getStrategy("Interchange"));
+		attribute.setAttribute("Strategy",  SortStrategyManager.getStrategy(AgorithmConstant.INTERCHANGE_SORT.getName()));
+		attribute.setAttribute("Order",  OrderStrategyManager.getStrategy(OrderConstant.ASCENDING.getName()));
 	}
 
 	public static SortFactory getInstance() {

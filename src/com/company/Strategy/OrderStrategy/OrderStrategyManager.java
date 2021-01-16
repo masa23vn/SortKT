@@ -1,19 +1,23 @@
 package com.company.Strategy.OrderStrategy;
 
+import com.company.Strategy.OrderStrategy.Constant.OrderConstant;
+
 import java.util.HashMap;
 
 public class OrderStrategyManager {
-    private static HashMap<String, OrderStrategy> orderStrategy = new HashMap<String, OrderStrategy>();
+    private static HashMap<OrderConstant, OrderStrategy> orderStrategy = new HashMap<OrderConstant, OrderStrategy>();
 
     static {
-        orderStrategy.put("Ascending", new Ascending());
-        orderStrategy.put("Descending", new Descending());
+        orderStrategy.put(OrderConstant.ASCENDING, new Ascending());
+        orderStrategy.put(OrderConstant.DESCENDING, new Descending());
     }
 
     public static OrderStrategy getStrategy(String name) {
         try {
-            if (orderStrategy.containsKey(name)) {
-                return (OrderStrategy) orderStrategy.get(name).clone();
+            OrderConstant orderConstant = OrderConstant.isValid(name);
+            System.out.println("Order: " + orderConstant);
+            if (orderStrategy.containsKey(orderConstant)) {
+                return (OrderStrategy) orderStrategy.get(orderConstant).clone();
             } else {
                 return null;
             }
