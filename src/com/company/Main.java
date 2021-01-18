@@ -3,15 +3,11 @@ package com.company;
 import com.company.Class.Person;
 import com.company.SortFactory.SortFactory;
 import com.company.Strategy.OrderStrategy.OrderStrategyConstant.OrderStrategyConstant;
-import com.company.Strategy.OrderStrategy.Custom.PersonAgeAscending;
-import com.company.Strategy.OrderStrategy.Custom.PersonIdDescending;
-import com.company.Strategy.SortStrategy.SortStrategyCriteria.BestTimeCriteria;
-import com.company.Strategy.SortStrategy.SortStrategyCriteria.SortStrategyCriteria;
-import com.company.Strategy.SortStrategy.SortStrategyCriteria.WorstTimeCriteria;
-import com.company.Strategy.SortStrategy.Strategy.Constant.AgorithmConstant;
-import com.company.Strategy.SortStrategy.Strategy.Custom.customInterchange;
-import com.company.Strategy.SortStrategy.Strategy.InterchangeSort;
-import com.company.Strategy.SortStrategy.Strategy.MergeSort;
+import com.company.Strategy.OrderStrategy.Custom.*;
+import com.company.Strategy.SortStrategy.Constant.Complexity;
+import com.company.Strategy.SortStrategy.SortStrategyCriteria.*;
+import com.company.Strategy.SortStrategy.Strategy.SortStrategyConstant.SortStrategyConstant;
+import com.company.Strategy.SortStrategy.Strategy.Custom.*;
 
 import java.util.ArrayList;
 
@@ -30,7 +26,7 @@ public class Main {
 
         System.out.println(OrderStrategyConstant.DESCENDING);
         factory.setSortObject(array);
-        factory.setStrategy(AlgorithmsStrategyConstant.MERGER_SORT.getName());
+        factory.setStrategy(SortStrategyConstant.MERGER_SORT.getName());
         factory.setOrder(OrderStrategyConstant.DESCENDING.getName());
         factory.sort();
 
@@ -48,6 +44,7 @@ public class Main {
         array2.add(new Person(6,68, "John6"));
 
         System.out.println("Custom object");
+        System.out.println("set custom function to sortFactory");
         factory.setSortObject(array2);
         factory.setOrder(OrderStrategyConstant.PERSON_AGE_ASCENDING.getName());
 
@@ -55,6 +52,7 @@ public class Main {
         check.add(new BestTimeCriteria(Complexity.NLOGN.getName()));
         factory.setStrategy(check);
         System.out.println("Using " + factory.getStrategy());
+        System.out.println("Using " + factory.getOrder());
 
         factory.sort();
         for (Person i: array2) {
@@ -62,15 +60,18 @@ public class Main {
         }
         System.out.println();
 
+
+        System.out.println("add custom function to various manager class");
         factory.addCustomSortStrategy("customInterchange",new customInterchange());
         ArrayList<SortStrategyCriteria> check2 = new ArrayList<>();
         check2.add(new BestTimeCriteria("o(1)"));
         check2.add(new WorstTimeCriteria("o(1)"));
         factory.setStrategy(check2);
-        System.out.println("Using " + factory.getStrategy());
 
         factory.addCustomOrderStrategy("idDescending", new PersonIdDescending());
         factory.setOrder("idDescending");
+
+        System.out.println("Using " + factory.getStrategy());
         System.out.println("Using " + factory.getOrder());
 
         factory.sort();

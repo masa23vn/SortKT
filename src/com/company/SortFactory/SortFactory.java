@@ -4,7 +4,7 @@ import com.company.Strategy.OrderStrategy.OrderStrategyConstant.OrderStrategyCon
 import com.company.Strategy.OrderStrategy.OrderStrategy;
 import com.company.Strategy.OrderStrategy.OrderStrategyManager;
 import com.company.Strategy.SortStrategy.SortStrategyCriteria.SortStrategyCriteria;
-import com.company.Strategy.SortStrategy.Strategy.AlgorithmsStrategyConstant.AlgorithmsStrategyConstant;
+import com.company.Strategy.SortStrategy.Strategy.SortStrategyConstant.SortStrategyConstant;
 import com.company.Strategy.SortStrategy.Strategy.SortStrategy;
 import com.company.Strategy.SortStrategy.SortStrategyManager;
 
@@ -17,7 +17,7 @@ public class SortFactory {
 	private Attribute attribute = new Attribute();
 
 	private SortFactory() {
-		attribute.setAttribute("Strategy",  SortStrategyManager.getStrategy(AlgorithmsStrategyConstant.INTERCHANGE_SORT.getName()));
+		attribute.setAttribute("Strategy",  SortStrategyManager.getStrategy(SortStrategyConstant.INTERCHANGE_SORT.getName()));
 		attribute.setAttribute("Order",  OrderStrategyManager.getStrategy(OrderStrategyConstant.ASCENDING.getName()));
 	}
 

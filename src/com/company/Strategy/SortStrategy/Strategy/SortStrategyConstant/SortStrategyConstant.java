@@ -1,12 +1,12 @@
-package com.company.Strategy.SortStrategy.Strategy.AlgorithmsStrategyConstant;
+package com.company.Strategy.SortStrategy.Strategy.SortStrategyConstant;
 
-public enum AlgorithmsStrategyConstant {
+public enum SortStrategyConstant {
     MERGER_SORT("Merge"),
     INTERCHANGE_SORT("Interchange");
 
     private String name;
 
-    AlgorithmsStrategyConstant(String name) {
+    SortStrategyConstant(String name) {
         this.name = name;
     }
 
@@ -14,8 +14,8 @@ public enum AlgorithmsStrategyConstant {
         return name;
     }
 
-    public static AlgorithmsStrategyConstant isValid(String name){
-        for (AlgorithmsStrategyConstant al: values()){
+    public static SortStrategyConstant isValid(String name){
+        for (SortStrategyConstant al: values()){
             if(al.getName().equals(name))
                 return al;
         }

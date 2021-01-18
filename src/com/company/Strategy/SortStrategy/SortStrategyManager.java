@@ -1,7 +1,7 @@
 package com.company.Strategy.SortStrategy;
 
 import com.company.Strategy.SortStrategy.SortStrategyCriteria.SortStrategyCriteria;
-import com.company.Strategy.SortStrategy.Strategy.AlgorithmsStrategyConstant.AlgorithmsStrategyConstant;
+import com.company.Strategy.SortStrategy.Strategy.SortStrategyConstant.SortStrategyConstant;
 import com.company.Strategy.SortStrategy.Strategy.InterchangeSort;
 import com.company.Strategy.SortStrategy.Strategy.MergeSort;
 import com.company.Strategy.SortStrategy.Strategy.SortStrategy;
@@ -10,23 +10,23 @@ import java.util.HashMap;
 import java.util.List;
 
 public class SortStrategyManager {
-    private static HashMap<AgorithmConstant, SortStrategy> sortStrategy = new HashMap<>();
+    private static HashMap<SortStrategyConstant, SortStrategy> sortStrategy = new HashMap<>();
     private static HashMap<String, SortStrategy> customStrategy = new HashMap<>();
 
     static {
-        sortStrategy.put(AgorithmConstant.INTERCHANGE_SORT, new InterchangeSort());
-        sortStrategy.put(AgorithmConstant.MERGER_SORT, new MergeSort());
+        sortStrategy.put(SortStrategyConstant.INTERCHANGE_SORT, new InterchangeSort());
+        sortStrategy.put(SortStrategyConstant.MERGER_SORT, new MergeSort());
     }
 
     public static SortStrategy getStrategy(String name) {
         try {
             // check default strategy
-            AgorithmConstant agorithmConstant = AgorithmConstant.isValid(name);
-            if (agorithmConstant != null) {
-                System.out.println("strategy: " + agorithmConstant.getName());
+            SortStrategyConstant sortStrategyConstant = SortStrategyConstant.isValid(name);
+            if (sortStrategyConstant != null) {
+                System.out.println("strategy: " + sortStrategyConstant.getName());
 
-                if (sortStrategy.containsKey(agorithmConstant)) {
-                    return (SortStrategy) sortStrategy.get(agorithmConstant).clone();
+                if (sortStrategy.containsKey(sortStrategyConstant)) {
+                    return (SortStrategy) sortStrategy.get(sortStrategyConstant).clone();
                 } else {
                     return null;
                 }
@@ -46,7 +46,7 @@ public class SortStrategyManager {
         try {
             int number = criterias.size();
             // check default strategy
-            for (AgorithmConstant stratName : sortStrategy.keySet()) {
+            for (SortStrategyConstant stratName : sortStrategy.keySet()) {
                 int tempNum = 0;
                 for (SortStrategyCriteria criteria : criterias) {
                     if (criteria.Check(sortStrategy.get(stratName))) {
@@ -76,7 +76,7 @@ public class SortStrategyManager {
     }
 
     public static Boolean setCustomStrategy(String name, SortStrategy strategy) {
-        if (AgorithmConstant.isValid(name) == null) { // check if overlap with default strategy name
+        if (SortStrategyConstant.isValid(name) == null) { // check if overlap with default strategy name
             customStrategy.put(name, strategy);
             return true;
         }
