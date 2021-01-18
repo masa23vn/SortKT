@@ -11,8 +11,14 @@ public class OrderStrategyManager {
     private static HashMap<String, OrderStrategy> customStrategy = new HashMap<String, OrderStrategy>();
 
     static {
-        orderStrategy.put(OrderConstant.ASCENDING, new Ascending());
-        orderStrategy.put(OrderConstant.DESCENDING, new Descending());
+        orderStrategy.put(OrderStrategyConstant.ASCENDING, new Ascending());
+        orderStrategy.put(OrderStrategyConstant.DESCENDING, new Descending());
+        orderStrategy.put(OrderStrategyConstant.PERSON_AGE_ASCENDING, new PersonAgeAscending());
+        orderStrategy.put(OrderStrategyConstant.PERSON_AGE_DESCENDING, new PersonAgeDescending());
+        orderStrategy.put(OrderStrategyConstant.PERSON_ID_ASCENDING, new PersonIdAscending());
+        orderStrategy.put(OrderStrategyConstant.PERSON_ID_DESCENDING, new PersonIdDescending());
+        orderStrategy.put(OrderStrategyConstant.STRING_ASCENDING, new StringOrderAscending());
+        orderStrategy.put(OrderStrategyConstant.STRING_DESCENDING, new StringOrderDescending());
     }
 
     public static OrderStrategy getStrategy(String name) {

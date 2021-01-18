@@ -1,7 +1,7 @@
 package com.company.Strategy.SortStrategy;
 
 import com.company.Strategy.SortStrategy.SortStrategyCriteria.SortStrategyCriteria;
-import com.company.Strategy.SortStrategy.Strategy.Constant.AgorithmConstant;
+import com.company.Strategy.SortStrategy.Strategy.AlgorithmsStrategyConstant.AlgorithmsStrategyConstant;
 import com.company.Strategy.SortStrategy.Strategy.InterchangeSort;
 import com.company.Strategy.SortStrategy.Strategy.MergeSort;
 import com.company.Strategy.SortStrategy.Strategy.SortStrategy;
