@@ -58,6 +58,10 @@ public class SortFactory {
 		attribute.setAttribute("Strategy", SortStrategyManager.getStrategy(criteria));
 	}
 
+	public void addCustomSortStrategy(String name, SortStrategy strategy) {
+		SortStrategyManager.setCustomStrategy(name, strategy);
+	}
+
 	public OrderStrategy getOrder() {
 		return (OrderStrategy) attribute.getAttribute("Order");
 	}
@@ -68,6 +72,10 @@ public class SortFactory {
 
 	public void setOrder(OrderStrategy order) {
 		attribute.setAttribute("Order", order);
+	}
+
+	public void addCustomOrderStrategy(String name, OrderStrategy strategy) {
+		OrderStrategyManager.setCustomStrategy(name, strategy);
 	}
 
 	public Boolean sort() {

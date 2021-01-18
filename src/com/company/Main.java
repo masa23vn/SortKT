@@ -4,9 +4,12 @@ import com.company.Class.Person;
 import com.company.SortFactory.SortFactory;
 import com.company.Strategy.OrderStrategy.Constant.OrderConstant;
 import com.company.Strategy.OrderStrategy.Custom.PersonAgeAscending;
+import com.company.Strategy.OrderStrategy.Custom.PersonIdDescending;
 import com.company.Strategy.SortStrategy.SortStrategyCriteria.BestTimeCriteria;
 import com.company.Strategy.SortStrategy.SortStrategyCriteria.SortStrategyCriteria;
+import com.company.Strategy.SortStrategy.SortStrategyCriteria.WorstTimeCriteria;
 import com.company.Strategy.SortStrategy.Strategy.Constant.AgorithmConstant;
+import com.company.Strategy.SortStrategy.Strategy.Custom.customInterchange;
 import com.company.Strategy.SortStrategy.Strategy.InterchangeSort;
 import com.company.Strategy.SortStrategy.Strategy.MergeSort;
 
@@ -37,12 +40,12 @@ public class Main {
         System.out.println();
 
         ArrayList<Person> array2 = new ArrayList();
-        array2.add(new Person(1,50, "John"));
-        array2.add(new Person(1,23, "John"));
-        array2.add(new Person(1,41, "John"));
-        array2.add(new Person(1,20, "John"));
-        array2.add(new Person(1,11, "John"));
-        array2.add(new Person(1,68, "John"));
+        array2.add(new Person(1,50, "John1"));
+        array2.add(new Person(2,23, "John2"));
+        array2.add(new Person(3,41, "John3"));
+        array2.add(new Person(4,20, "John4"));
+        array2.add(new Person(5,11, "John5"));
+        array2.add(new Person(6,68, "John6"));
 
         System.out.println("Custom object");
         factory.setSortObject(array2);
@@ -51,7 +54,24 @@ public class Main {
         ArrayList<SortStrategyCriteria> check = new ArrayList<>();
         check.add(new BestTimeCriteria("o(n^2)"));
         factory.setStrategy(check);
-        System.out.println(factory.getStrategy());
+        System.out.println("Using " + factory.getStrategy());
+
+        factory.sort();
+        for (Person i: array2) {
+            System.out.println(i);
+        }
+        System.out.println();
+
+        factory.addCustomSortStrategy("customInterchange",new customInterchange());
+        ArrayList<SortStrategyCriteria> check2 = new ArrayList<>();
+        check2.add(new BestTimeCriteria("o(1)"));
+        check2.add(new WorstTimeCriteria("o(1)"));
+        factory.setStrategy(check2);
+        System.out.println("Using " + factory.getStrategy());
+
+        factory.addCustomOrderStrategy("idDescending", new PersonIdDescending());
+        factory.setOrder("idDescending");
+        System.out.println("Using " + factory.getOrder());
 
         factory.sort();
         for (Person i: array2) {
